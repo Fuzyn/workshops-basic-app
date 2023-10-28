@@ -5,6 +5,7 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
+        Publishers::LoanBookPublisher.new(message: {book_loan: @book_loan.attributes, book: @book_loan.book.attributes }).publish
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
       else

@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    a9n (1.5.0)
     actioncable (7.0.8)
       actionpack (= 7.0.8)
       activesupport (= 7.0.8)
@@ -68,6 +69,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    amq-protocol (2.3.2)
     ast (2.4.2)
     autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
@@ -81,6 +83,9 @@ GEM
       popper_js (>= 2.11.8, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bunny (2.22.0)
+      amq-protocol (~> 2.3, >= 2.3.1)
+      sorted_set (~> 1, >= 1.0.2)
     capybara (3.39.2)
       addressable
       matrix
@@ -212,6 +217,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rbtree (0.4.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (4.8.1)
@@ -286,8 +292,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    set (1.0.3)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
+    sorted_set (1.0.3)
+      rbtree
+      set (~> 1.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -332,8 +342,10 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  a9n
   bootsnap
   bootstrap
+  bunny
   capybara
   debug
   devise
@@ -366,7 +378,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.2.1p31
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.8
