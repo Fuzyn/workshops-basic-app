@@ -1,0 +1,7 @@
+<div class="container">
+  Today in <%= weather_presenter.location_name %> is
+  <%= weather_presenter.temperature %> °C,
+  <%= weather_presenter.weather_condition %>
+  <%= image_tag "#{weather_presenter.weather_icon}", alt: 'weather_icon', class: 'weather-logo' %>
+  <b><%= weather_presenter.encourage_text %></b>
+</div>

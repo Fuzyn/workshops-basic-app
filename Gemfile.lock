@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    a9n (1.5.0)
     actioncable (7.0.8)
       actionpack (= 7.0.8)
       activesupport (= 7.0.8)
@@ -332,6 +333,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  a9n
   bootsnap
   bootstrap
   capybara
@@ -366,7 +368,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.2.1p31
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.8
