@@ -33,6 +33,10 @@ group :development, :test do
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers', '~> 5.3'
+  gem 'a9n'
+  gem 'omniauth-google-oauth2'
+  gem 'omniauth-rails_csrf_protection'
+  gem 'google-api-client', require: 'google/apis/calendar_v3'
 end
 
 group :development do
