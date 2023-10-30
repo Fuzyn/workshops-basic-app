@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   belongs_to :category
   belongs_to :publisher
 
+  after_destroy_commit -> { broadcast_remove_to :books }
+
   has_many :book_loans, dependent: :destroy
   has_many :book_reservations, dependent: :destroy
 
