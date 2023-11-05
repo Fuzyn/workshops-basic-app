@@ -34,6 +34,8 @@ class UserCalendarNotifier
   end
 
   def remove_notice
+    return unless user.token.present? && user.refresh_token.present?
+
     google_calendar_client.delete_event(CALENDAR_ID, book_loan.google_calendar_event_id)
   end
 

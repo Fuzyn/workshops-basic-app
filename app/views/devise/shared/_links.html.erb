@@ -24,7 +24,7 @@
                  url: omniauth_authorize_path(resource_name, provider),
                  method: :post,
                  data: { turbo: false } do |f| %>
-      <%= f.submit "Log in with #{provider.to_s.titleize}", type: "image", src: url_for("/assets/btn_google_signin_dark_disabled_web@2x.png") %>
+      <%= f.submit "Log in with #{provider.to_s.titleize}", type: "image", src: url_for("/assets/btn_google_signin_dark_disabled_web@2x.png"), style: "width: 200px" %>
     <% end %>
   <% end %>
 <% end %>
