@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
 
     mail({
            to: book_loan.user&.email,
-           subject: "Oddej ksionszke!"
+           subject: "Wypożyczyłeś ksionszke!"
          })
   end
 
