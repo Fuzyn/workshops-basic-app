@@ -15,8 +15,8 @@ export default class extends Controller {
         .then((response) => response.text())
         .then(res => {
           const infinityScroll = document.getElementById("infinity_scroll")
-            console.log(infinityScroll)
-          if(infinityScroll!==null) infinityScroll.remove();
+
+          if(!!infinityScroll) infinityScroll.remove();
 
           const searchResults = document.getElementById("search_results")
           searchResults.textContent = ''
