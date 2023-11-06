@@ -17,7 +17,8 @@ module ApplicationHelper
       'Loan',
       book_loans_path(book_id: book.id),
       method: :post,
-      class: "btn #{css_class}"
+      class: "btn #{css_class}",
+      id: 'loan-button'
     )
   end
 end
