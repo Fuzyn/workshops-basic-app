@@ -5,6 +5,7 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
+        send_new_book_loan_log
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
       else
@@ -17,6 +18,7 @@ class BookLoansController < ApplicationController
   def cancel
     respond_to do |format|
       if @book_loan.cancelled!
+        send_remove_book_loan_log
         format.html { redirect_to book_requests_path, notice: flash_notice }
         format.json { render :show, status: :ok, location: book }
       end
@@ -26,6 +28,14 @@ class BookLoansController < ApplicationController
   private
 
   delegate :book, to: :@book_loan
+
+  def send_new_book_loan_log
+    Publishers::LoanBookPublisher.new(message: {type: 'NEW BOOK LOAN', book_loan: @book_loan.attributes, book: @book_loan.book.attributes }).publish
+  end
+
+  def send_remove_book_loan_log
+    Publishers::LoanBookPublisher.new(message: {type: 'REMOVE BOOK LOAN', book_loan: @book_loan.attributes, book: @book_loan.book.attributes }).remove_loan
+  end
 
   def prepare_book_loan
     @book_loan = current_user.book_loans.new(book_id: book_loan_params, due_date: Time.zone.today + 14.days)
